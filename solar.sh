@@ -32,7 +32,7 @@ while getopts "i:u:p:d:h:" opt; do
 done
 
 if [ -z "$ip" ] || [ -z "$username" ] || [ -z "$password" ]; then
-  echo "IP, username or password is missing.\n"
+  echo "IP, username or password is missing!\n\n"
   echo "$description"
   exit 1
 fi
