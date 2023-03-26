@@ -9,6 +9,7 @@ Parameters:
   -u Username of the web interface
   -p Password of the web interface
   [-d] Delay between measurements in seconds; default is 5s
+  [-h] Prints csv titles: <date>,webdata_now_p,webdata_today_e,webdata_total_e
 
 Example:
   sh solar.sh -i 192.168.178.55 -u admin -p admin -d 1
@@ -16,7 +17,7 @@ EOF
 )
 delay=5
 
-while getopts "i:u:p:d:" opt; do
+while getopts "i:u:p:d:h:" opt; do
   case $opt in
     i)
       ip="$OPTARG"
@@ -30,6 +31,8 @@ while getopts "i:u:p:d:" opt; do
     d)
       delay="$OPTARG"
       ;;
+    h)
+      titles=true
     \?)
       echo "Invalid option: -$OPTARG" >&2
       exit 1
@@ -53,7 +56,9 @@ declare -a keys=(
     'webdata_total_e'
 )
 
-echo "date,$(printf "%s," "${keys[@]}")" | sed 's/,$//'
+if [ "$titles" == true ]; then
+  echo "date,$(printf "%s," "${keys[@]}")" | sed 's/,$//'
+fi
 while true
 do
     declare -a keys=(
