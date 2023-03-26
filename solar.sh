@@ -33,6 +33,7 @@ while getopts "i:u:p:d:h:" opt; do
       ;;
     h)
       titles=true
+      ;;
     \?)
       echo "Invalid option: -$OPTARG" >&2
       exit 1
