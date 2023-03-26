@@ -50,6 +50,7 @@ if [ -z "$ip" ] || [ -z "$username" ] || [ -z "$password" ]; then
   exit 1
 fi
 
+# Keys in javascript code if page
 declare -a keys=(
     'webdata_now_p'
     'webdata_today_e'
@@ -74,7 +75,11 @@ do
         value=$(echo "$response" | grep -oE "var $key = \"([0-9]+)\";" | cut -d'"' -f2)
         output+=("$value")
     done
-    echo echo $(printf "%s," "${output[@]}") | sed 's/,$//'
+
+    # if data received, then there was (date + keys.length)
+    if [ "${#output[@]}" -gt 1 ]; then
+      echo echo $(printf "%s," "${output[@]}") | sed 's/,$//'
+    fi
 
     sleep $delay
 done
