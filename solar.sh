@@ -1,20 +1,6 @@
 #!/bin/bash
 
-description=$(cat <<EOF
-Logs the current watt produced by the inverter.
-Successfully tested with: deye sun600g3-eu-230 Micro Inverter (e.g. https://www.juskys.de/balkonkraftwerk-mit-2-solarmodulen-wechselrichter-ac-kabel.html).
-
-Parameters:
-  -i IP address of the inverter
-  -u Username of the web interface
-  -p Password of the web interface
-  [-d] Delay between measurements in seconds; default is 5s
-  [-h] Prints csv titles (<date>,webdata_now_p,webdata_today_e,webdata_total_e), omits them otherwise
-
-Example:
-  sh solar.sh -i 192.168.178.55 -u admin -p admin -d 1
-EOF
-)
+description=$(cat README.md)
 delay=5
 
 while getopts "i:u:p:d:h:" opt; do
