@@ -53,7 +53,7 @@ declare -a keys=(
     'webdata_total_e'
 )
 
-echo "date,$(printf "%s," "${keys[@]}")"
+echo "date,$(printf "%s," "${keys[@]}")" | sed 's/,$//'
 while true
 do
     declare -a keys=(
@@ -69,7 +69,7 @@ do
         value=$(echo "$response" | grep -oE "var $key = \"([0-9]+)\";" | cut -d'"' -f2)
         output+=("$value")
     done
-    echo echo $(printf "%s," "${output[@]}")  | sed 's/,$//'
+    echo echo $(printf "%s," "${output[@]}") | sed 's/,$//'
 
     sleep $delay
 done
