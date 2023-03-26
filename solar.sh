@@ -9,7 +9,7 @@ Parameters:
   -u Username of the web interface
   -p Password of the web interface
   [-d] Delay between measurements in seconds; default is 5s
-  [-h] Prints csv titles: <date>,webdata_now_p,webdata_today_e,webdata_total_e
+  [-h] Prints csv titles (<date>,webdata_now_p,webdata_today_e,webdata_total_e), omits them otherwise
 
 Example:
   sh solar.sh -i 192.168.178.55 -u admin -p admin -d 1
