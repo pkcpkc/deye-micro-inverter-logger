@@ -3,7 +3,7 @@
 description=$(cat README.md)
 delay=5
 
-while getopts "i:u:p:d:h:" opt; do
+while getopts "i:u:p:d:h" opt; do
   case $opt in
     i)
       ip="$OPTARG"
@@ -37,7 +37,7 @@ if [ -z "$ip" ] || [ -z "$username" ] || [ -z "$password" ]; then
   exit 1
 fi
 
-# Keys in javascript code if page
+# Keys in javascript code of html status.html page
 declare -a keys=(
     'webdata_now_p'
     'webdata_today_e'
@@ -55,17 +55,17 @@ do
         'webdata_total_e'
     )
     output=()
-    output+=($(date "+%Y-%m-%d %H:%M:%S"));
+    output+=($(date +%FT%T));
     response=$(curl http://$ip/status.html -s -u "$username:$password")
     for key in "${keys[@]}"
     do
-        value=$(echo "$response" | grep -oE "var $key = \"([0-9]+)\";" | cut -d'"' -f2)
+        value=$(echo "$response" | grep -oE "var $key = \"([0-9\.]+)\";" | cut -d'"' -f2)
         output+=("$value")
     done
 
     # if data received, then there was (date + keys.length)
     if [ "${#output[@]}" -gt 1 ]; then
-      echo echo $(printf "%s," "${output[@]}") | sed 's/,$//'
+      echo $(printf "%s," "${output[@]}") | sed 's/,$//'
     fi
 
     sleep $delay
