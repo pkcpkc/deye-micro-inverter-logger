@@ -1,7 +1,7 @@
 #!/bin/bash
 
 description=$(cat README.md)
-delay=5
+delay=60
 
 while getopts "i:u:p:d:h" opt; do
   case $opt in
@@ -22,10 +22,12 @@ while getopts "i:u:p:d:h" opt; do
       ;;
     \?)
       echo "Invalid option: -$OPTARG" >&2
+      echo "$description"
       exit 1
       ;;
     :)
       echo "Option -$OPTARG requires an argument." >&2
+      echo "$description"
       exit 1
       ;;
   esac

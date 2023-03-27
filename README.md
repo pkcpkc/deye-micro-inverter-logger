@@ -3,6 +3,7 @@
 Logs the current watt produced by the inverter deye sun600g3-eu-230 Micro Inverter (e.g. https://www.juskys.de/balkonkraftwerk-mit-2-solarmodulen-wechselrichter-ac-kabel.html) by reading from the web interface.
 
 ## Usage
+
   `sh solar.sh -i <IP> -u <username> -p <password>[ -d <delay>][ -h]`
 
 ### Parameters:
@@ -10,7 +11,7 @@ Logs the current watt produced by the inverter deye sun600g3-eu-230 Micro Invert
 `-i` IP address of the inverter  
 `-u` Username of the web interface  
 `-p` Password of the web interface  
-`-d` Delay between measurements in seconds; default is 5s  
+`-d` Delay between measurements in seconds; default is 60s  
 `-h` Prints csv titles (&lt;date>,webdata_now_p,webdata_today_e,webdata_total_e), omits them per default  
 
 ## Example
@@ -23,6 +24,7 @@ Logs the current watt produced by the inverter deye sun600g3-eu-230 Micro Invert
 `2023-03-27T08:39:06,0,0.0,0.1`  
 
 **Columns**
+
 - `date` = Date
 - `webdata_now_p` = Current power in Watt
 - `webdata_today_e` = Yield today in kWh
