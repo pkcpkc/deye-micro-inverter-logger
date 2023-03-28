@@ -1,7 +1,7 @@
 #!/bin/bash
 
 description=$(cat README.md)
-delay=60
+delay=390
 
 while getopts "i:u:p:d:h" opt; do
   case $opt in
