@@ -49,13 +49,9 @@ declare -a keys=(
 if [ "$titles" == true ]; then
   echo "date,$(printf "%s," "${keys[@]}")" | sed 's/,$//'
 fi
+
 while true
 do
-    declare -a keys=(
-        'webdata_now_p'
-        'webdata_today_e'
-        'webdata_total_e'
-    )
     output=()
     output+=($(date +%FT%T));
     response=$(curl http://$ip/status.html -s -u "$username:$password")
