@@ -12,7 +12,7 @@ Logs the current watt produced by the inverter deye sun600g3-eu-230 Micro Invert
 `-u` Username of the web interface  
 `-p` Password of the web interface  
 `-d` Delay between measurements in seconds; default is 390s = 6m 15s, which is the internal refresh rate of the data  
-`-h` Prints csv titles (&lt;date>,webdata_now_p,webdata_today_e,webdata_total_e), omits them per default  
+`-h` Prints csv titles (date, webdata_now_p,webdata_today_e,webdata_total_e), omits them per default  
 
 ## Example
 
